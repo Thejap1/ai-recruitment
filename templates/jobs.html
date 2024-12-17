@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            background-image: url("{{ url_for('static', filename='images/ai_recruitment_login_bg.png') }}");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
+            max-width: 900px;
+            margin: auto;
+            border-radius: 8px;
+        }
+
+        .logo-header {
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            color: #00bfa5;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        ul {
+            list-style-type: none; /* Removes bullet points */
+            padding: 0; /* Removes default padding */
+        }
+
+        .job-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #00bfa5;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s;
+        }
+
+        .job-card:hover {
+            transform: scale(1.02);
+        }
+
+        .job-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00e6a9;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-description {
+            font-size: 1rem;
+            color: #d9d9d9;
+            margin-bottom: 0.8rem;
+        }
+
+        .job-requirements {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 1.2rem;
+        }
+
+        .apply-btn {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background-color: #00bfa5;
+            color: #ffffff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .apply-btn:hover {
+            background-color: #008e76;
+        }
+
+        .logout-link {
+            color: #00bfa5;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .logout-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-header">Rec.ai</div>
+        <h1>Available Jobs</h1>
+
+        <ul>
+            {% for job in jobs %}
+                <li class="job-card">
+                    <div class="job-title">{{ job.title }}</div>
+                    <div class="job-description">{{ job.description }}</div>
+                    <div class="job-requirements"><strong>Requirements:</strong> {{ job.requirements }}</div>
+                    <a href="{{ url_for('main.apply_job', job_id=job.id) }}" class="apply-btn">Apply</a>
+                </li>
+            {% endfor %}
+        </ul>
+        
+        <a href="{{ url_for('main.logout') }}" class="logout-link">Logout</a>
+    </div>
+</body>
+</html>

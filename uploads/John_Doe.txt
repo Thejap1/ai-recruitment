@@ -1,0 +1,11 @@
+John Doe
+Software Engineer
+
+Skills:
+- Python, Django, MongoDB
+- Full-stack development
+- RESTful APIs
+
+Experience:
+- Python and Django development for web applications.
+- Integrated MongoDB for data management.

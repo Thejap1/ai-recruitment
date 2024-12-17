@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rec.ai - Applications</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+ 
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            background-image: url("{{ url_for('static', filename='images/ai_recruitment_bg.png') }}");
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
+            max-width: 900px;
+            margin: auto;
+            border-radius: 8px;
+            margin-top: 50px;
+        }
+        
+        .logo-header {
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            color: #00bfa5;
+            margin-bottom: 1.5rem;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #333;
+            color: #ffffff;
+            margin-top: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 1px solid #555;
+        }
+
+        th {
+            background-color: #00bfa5;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #444;
+        }
+
+        a {
+            color: #00bfa5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 1rem;
+            color: #00bfa5;
+        }
+
+        .status-dropdown {
+            background-color: #00bfa5;
+            color: #ffffff;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-header">Rec.ai</div>
+        
+        <h1>Applications</h1>
+
+        <form action="{{ url_for('main.generate_report') }}" method="POST">
+            <button type="submit">Generate Report</button>
+        </form>
+                
+        <table>
+            <thead>
+                <tr>
+                    <th>Candidate Name</th>
+                    <th>Job Title</th>
+                    <th>Resume</th>
+                    <th>Status</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for application in applications %}
+                <tr>
+                    <td>{{ application.user.username }}</td>
+                    <td>{{ application.job.title }}</td>
+                    <td><a href="{{ url_for('static', filename='uploads/' + application.resume_path) }}" target="_blank">Download Resume</a></td>
+                    <td>
+                        <form method="POST" action="{{ url_for('main.update_application_status', application_id=application.id) }}">
+                            <select name="status" class="status-dropdown" onchange="this.form.submit()">
+                                <option value="Pending Review" {% if application.status == 'Pending Review' %}selected{% endif %}>Pending Review</option>
+                                <option value="Under Review" {% if application.status == 'Under Review' %}selected{% endif %}>Under Review</option>
+                                <option value="Interview Scheduled" {% if application.status == 'Interview Scheduled' %}selected{% endif %}>Interview Scheduled</option>
+                                <option value="Interviewing" {% if application.status == 'Interviewing' %}selected{% endif %}>Interviewing</option>
+                                <option value="Offer Extended" {% if application.status == 'Offer Extended' %}selected{% endif %}>Offer Extended</option>
+                                <option value="Accepted" {% if application.status == 'Accepted' %}selected{% endif %}>Accepted</option>
+                                <option value="Rejected" {% if application.status == 'Rejected' %}selected{% endif %}>Rejected</option>
+                            </select>                            
+                        </form>
+                    </td>
+                    <td>{{ application.email }}</td>
+                    <td><a href="{{ url_for('main.job_list') }}" class="back-link">Back to Job Listings</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
