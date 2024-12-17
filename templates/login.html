@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-image: url("{{ url_for('static', filename='images/ai_recruitment_login_bg.png') }}");
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+        }
+
+        .logo-header {
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            color: #00bfa5;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            color: #ffffff;
+            margin-top: 0;
+        }
+
+        .login-container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .flashes {
+            color: #ffcccb;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label, input[type="submit"], a {
+            color: #ffffff;
+            font-size: 1rem;
+            margin-top: 1rem;
+            text-align: left;
+        }
+
+        input[type="text"], input[type="password"] {
+            padding: 0.5rem;
+            margin-top: 0.3rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        input[type="submit"] {
+            background-color: #00bfa5;
+            border: none;
+            border-radius: 5px;
+            padding: 0.7rem;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #008e76;
+        }
+
+        a {
+            color: #00bfa5;
+            text-align: center;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <!-- Company Name / Logo -->
+        <div class="logo-header">Rec.ai</div>
+
+        <h1>Login</h1>
+
+        <!-- Flash messages section -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('main.login') }}">
+            <label for="email">Email:</label>
+            <input type="text" name="email" id="email" required autofocus>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+            <input type="submit" value="Login"><br>
+        </form>
+        <a href="{{ url_for('main.signup_view') }}">Don't have an account? Signup</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+job_title,job_requirements,resume_text,label
+"Software Engineer","Python, Django, Flask","Experience in Python and Django development.",1
+"Data Scientist","Python, Pandas, Machine Learning","Strong experience in data manipulation with Pandas.",1
+"Project Manager","Agile, Scrum","Managed projects in an Agile environment.",0
+"Web Developer","HTML, CSS, JavaScript","Developed websites using HTML, CSS, and JavaScript.",1

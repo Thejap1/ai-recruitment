@@ -1,0 +1,15 @@
+/* Styles for report */
+button {
+    background-color: #00bfa5;
+    border: none;
+    border-radius: 5px;
+    padding: 0.7rem;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #008e76;
+}

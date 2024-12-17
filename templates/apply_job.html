@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for {{ job.title }}</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            background-image: url("{{ url_for('static', filename='images/ai_recruitment_login_bg.png') }}");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
+            max-width: 600px;
+            margin: auto;
+            border-radius: 8px;
+        }
+
+        .logo-header {
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            color: #00bfa5;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            font-size: 2rem;
+        }
+
+        h2, h3 {
+            color: #00bfa5;
+            margin-top: 1.5rem;
+        }
+
+        label, button, a {
+            color: #ffffff;
+            font-size: 1rem;
+            margin-top: 1rem;
+            display: block;
+        }
+
+        input[type="text"], input[type="file"] {
+            padding: 0.5rem;
+            margin-top: 0.3rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        button {
+            background-color: #00bfa5;
+            border: none;
+            border-radius: 5px;
+            padding: 0.7rem;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #008e76;
+        }
+
+        a {
+            color: #00bfa5;
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-header">Rec.ai</div>
+
+        <h1>Apply for {{ job.title }}</h1>
+
+        <h2>Description:</h2>
+        <p>{{ job.description }}</p>
+        <h3>Requirements:</h3>
+        <p>{{ job.requirements }}</p>
+
+        <form method="POST" enctype="multipart/form-data">
+            <label for="email">Email:</label>
+            <input type="text" name="email" id="email" required autofocus>
+            <label for="resume">Upload Resume:</label>
+            <input type="file" id="resume" name="resume" required>
+            <button type="submit">Submit Application</button>
+        </form>
+
+        <a href="{{ url_for('main.job_list') }}">Back to Job Listings</a>
+    </div>
+</body>
+</html>

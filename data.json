@@ -1,0 +1,59 @@
+{
+    "questions": [
+        {
+            "question": "What is the correct file extension for Python files?",
+            "options": [".py", ".pt", ".java", ".pyt"],
+            "correct_answer": ".py"
+        },
+        {
+            "question": "Which HTML tag is used to define an unordered list?",
+            "options": ["<ul>", "<ol>", "<li>", "<u>"],
+            "correct_answer": "<ul>"
+        },
+        {
+            "question": "Which of these is a Python data type?",
+            "options": ["Integer", "Array", "Queue", "Binary"],
+            "correct_answer": "Integer"
+        },
+        {
+            "question": "Which language is primarily used for web development alongside HTML and CSS?",
+            "options": ["Java", "JavaScript", "Python", "C++"],
+            "correct_answer": "JavaScript"
+        },
+        {
+            "question": "In databases, what does SQL stand for?",
+            "options": ["Structured Query Language", "Sequential Query Language", "System Query Language", "Syntax Query Language"],
+            "correct_answer": "Structured Query Language"
+        },
+        {
+            "question": "Which operator is used to check equality in Python?",
+            "options": ["==", "=", "eq", "==="],
+            "correct_answer": "=="
+        },
+        {
+            "question": "Which company developed the Java programming language?",
+            "options": ["Microsoft", "Sun Microsystems", "Apple", "Google"],
+            "correct_answer": "Sun Microsystems"
+        },
+        {
+            "question": "Which of these is not an operating system?",
+            "options": ["Windows", "Linux", "Chrome", "iOS"],
+            "correct_answer": "Chrome"
+        },
+        {
+            "question": "What is the name of the programming concept that allows functions to be passed as arguments?",
+            "options": ["Recursion", "Polymorphism", "First-class functions", "Encapsulation"],
+            "correct_answer": "First-class functions"
+        },
+        {
+            "question": "In object-oriented programming, what does 'inheritance' refer to?",
+            "options": [
+                "A class deriving attributes and behaviors from another class",
+                "Creating new attributes in a class",
+                "Defining variables inside methods",
+                "Grouping methods into modules"
+            ],
+            "correct_answer": "A class deriving attributes and behaviors from another class"
+        }
+    ]
+}

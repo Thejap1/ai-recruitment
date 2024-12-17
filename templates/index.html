@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Recruitment</title>
+</head>
+<body>
+    <h1>AI Recruitment</h1>
+    <form method="POST" action="{{ url_for('main.index') }}">
+        {{ form.hidden_tag() }}
+        {{ form.name.label }} {{ form.name() }}<br>
+        {{ form.mobile.label }} {{ form.mobile() }}<br>
+        {{ form.email.label }} {{ form.email() }}<br>
+        {{ form.graduation.label }} {{ form.graduation() }}<br>
+        {{ form.domain.label }} {{ form.domain() }}<br>
+        {{ form.cgpa.label }} {{ form.cgpa() }}<br>
+        {{ form.year.label }} {{ form.year() }}<br>
+        {{ form.authorized_university.label }} {{ form.authorized_university() }}<br>
+        {{ form.university_name.label }} {{ form.university_name() }}<br>
+        {{ form.exp_fresher.label }} {{ form.exp_fresher() }}<br>
+        {{ form.work_experience.label }} {{ form.work_experience() }}<br>
+        {{ form.field_experience.label }} {{ form.field_experience() }}<br>
+        {{ form.gender.label }} {{ form.gender() }}<br>
+        {{ form.citizenship.label }} {{ form.citizenship() }}<br>
+        {{ form.current_ctc.label }} {{ form.current_ctc() }}<br>
+        {{ form.expected_ctc.label }} {{ form.expected_ctc() }}<br>
+        <br>
+        {{ form.submit() }}
+    </form>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
